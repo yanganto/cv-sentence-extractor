@@ -55,7 +55,6 @@ impl<'a> SentenceExtractorBuilder<'a> {
     }
     pub fn build(&mut self, text: &str) -> SentenceExtractor {
         let lines: Vec<&str> = text.lines().collect();
-
         self.inner.text = if lines.len() > 1 {
             // skip disambiguation pages
             if lines.first().unwrap().contains("消歧義") {

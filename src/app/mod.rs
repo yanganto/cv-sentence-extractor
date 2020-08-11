@@ -11,6 +11,9 @@ use std::io::{BufRead, BufReader};
 use clap::{App, Arg, ArgMatches, SubCommand};
 use rand::{thread_rng, Rng};
 
+use clap::{App, Arg, ArgMatches, SubCommand};
+use rand::{thread_rng, Rng};
+
 #[cfg(test)]
 mod tests;
 
@@ -123,6 +126,7 @@ fn extract(matches: &ArgMatches) -> Result<()> {
         .unwrap_or("38")
         .parse::<usize>()
         .unwrap();
+<<<<<<< HEAD
     let mut ignore_symbols: Vec<char> = matches
         .value_of("ignore symbols")
         .unwrap_or("")
@@ -145,11 +149,16 @@ fn extract(matches: &ArgMatches) -> Result<()> {
     }
     let mut black_list_symbols: Vec<char> = matches
         .value_of("black list symbols")
+=======
+    let ignore_symbols: Vec<char> = matches
+        .value_of("ignore symbols")
+>>>>>>> zh-hk
         .unwrap_or("")
         .chars()
         .map(|c| SYMBOL_MAP.get(&c).unwrap_or(&c).clone())
         .collect();
 
+<<<<<<< HEAD
     if matches.is_present("black list symbols file") {
         let f = File::open(matches.value_of("black list symbols file").unwrap())?;
         for line in BufReader::new(f).lines() {
@@ -165,12 +174,18 @@ fn extract(matches: &ArgMatches) -> Result<()> {
         }
     }
 
+=======
+>>>>>>> zh-hk
     let mut builder = SentenceExtractorBuilder::new()
         .translate(matches.is_present("trans"))
         .shortest_length(shortest_length)
         .longest_length(longest_length)
+<<<<<<< HEAD
         .ignore_symbols(&ignore_symbols)
         .black_list_symbols(&black_list_symbols);
+=======
+        .ignore_symbols(&ignore_symbols);
+>>>>>>> zh-hk
 
     let mut sentences = vec![];
 
